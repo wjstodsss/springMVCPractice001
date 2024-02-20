@@ -2,13 +2,20 @@ package com.project.sample;
 
 import java.util.Calendar;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
 public class YoilTeller {
 	
-	public static void main(String[] args) {
+	@RequestMapping("/getYoil")
+	public static void main(HttpServletRequest request) {
 		// 1. ют╥б
-		String year = args[0];
-		String month = args[1];
-		String day = args[2];
+		String year = request.getParameter("year");
+		String month = request.getParameter("month");
+		String day = request.getParameter("day");
 		
 		int yyyy = Integer.parseInt(year);
 		int mm = Integer.parseInt(month);
