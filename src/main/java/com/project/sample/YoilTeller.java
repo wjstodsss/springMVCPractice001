@@ -1,8 +1,11 @@
 package com.project.sample;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Calendar;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class YoilTeller {
 	
 	@RequestMapping("/getYoil")
-	public static void main(HttpServletRequest request) {
+	public static void main(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// 1. 입력
 		String year = request.getParameter("year");
 		String month = request.getParameter("month");
@@ -29,8 +32,11 @@ public class YoilTeller {
 		char yoil = " 일월화수목금토".charAt(dayOfWeek);
 		
 		// 3. 출력
-		System.out.println(year + "년 " + month + "월 " + day + "일은 ");
-		System.out.println(yoil + "요일입니다.");
+		response.setContentType("text/html");
+		response.setCharacterEncoding("utf-8");
+		PrintWriter out = response.getWriter();
+		out.println(year + "년 " + month + "월 " + day + "일은 ");
+		out.println(yoil + "요일입니다.");
 	}
 
 }
