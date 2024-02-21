@@ -10,13 +10,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller // 원격 프로그램 등록 
-public class YoilTellerMVC {
-	@RequestMapping("/getYoilMVC2") // url과 메서드 연결
-	public String main(int year, int month, int day, Model model) throws IOException {
+public class YoilTellerMVC2 {
+	@RequestMapping("/yoil2") // url과 메서드 연결
+	public void main(int year, int month, int day, Model model) throws IOException {
 		
-		if (!isValid(year, month, day)) {
-			return "yoilError";
-		}
+//		if (!isValid(year, month, day)) {
+//			return "yoilError";
+//		}
 		
 		
 		char yoil = getYoil(year, month, day);
@@ -26,7 +26,6 @@ public class YoilTellerMVC {
 		model.addAttribute("day", day);
 		model.addAttribute("yoil", yoil);
 		
-		return "yoil";
 
 	}
 
