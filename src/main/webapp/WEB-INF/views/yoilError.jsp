@@ -3,7 +3,7 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Home</title>
+	<title>home</title>
 </head>
 <body>
 <h1>잘못된 입력입니다.</h1>

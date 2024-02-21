@@ -6,27 +6,31 @@ import java.time.LocalDate;
 import java.util.Calendar;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller // 원격 프로그램 등록 
-public class YoilTellerMVC {
-	@RequestMapping("/getYoilMVC") // url과 메서드 연결
-	public String main(int year, int month, int day, Model model) throws IOException {
+public class YoilTellerMVC3 {
+	@RequestMapping("/yoil3") // url과 메서드 연결
+	public ModelAndView main(int year, int month, int day) throws IOException {
 		
-		if (!isValid(year, month, day)) {
-			return "yoilError";
-		}
+		ModelAndView mv = new ModelAndView();
+		
+//		if (!isValid(year, month, day)) {
+//			return "yoilError";
+//		}
 		
 		
 		char yoil = getYoil(year, month, day);
 		
-		model.addAttribute("year", year);
-		model.addAttribute("month", month);
-		model.addAttribute("day", day);
-		model.addAttribute("yoil", yoil);
+		mv.addObject("year", year);
+		mv.addObject("month", month);
+		mv.addObject("day", day);
+		mv.addObject("yoil", yoil);
 		
-		return "yoil";
+		mv.setViewName("yoil");
+		
+		return mv;
 
 	}
 
@@ -39,6 +43,7 @@ public class YoilTellerMVC {
 		}
 	}
 
+	
 	private char getYoil(int year, int month, int day) {
 		Calendar cal = Calendar.getInstance();
 		cal.set(year, month - 1, day);

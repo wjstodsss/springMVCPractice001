@@ -3,9 +3,9 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>home</title>
+	<title>model and view</title>
 </head>
 <body>
-<h1>${year }년 ${month }월 ${day }일 ${yoil }요일입니다.</h1>
+<h1>모델 And 뷰를 사용하여 Model 객체생성을 안합니다</h1>
 </body>
 </html>
