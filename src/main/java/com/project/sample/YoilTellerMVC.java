@@ -12,17 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller // 원격 프로그램 등록 
 public class YoilTellerMVC {
 	@RequestMapping("/getYoilMVC") // url과 메서드 연결
-	public void main(String year, String month, String day, HttpServletResponse response) throws IOException {
-		int yyyy = Integer.parseInt(year);
-		int mm = Integer.parseInt(month);
-		int dd = Integer.parseInt(day);
+	public void main(int year, int month, int day, HttpServletResponse response) throws IOException {
 		
-		Calendar cal = Calendar.getInstance();
-		cal.set(yyyy, mm - 1, dd);
-		
-		int dayOfweek = cal.get(Calendar.DAY_OF_WEEK);
-		char yoil = " 일월화수목금토".charAt(dayOfweek);
-		
+		char yoil = getYoil(year, month, day);
 		
 		response.setContentType("text/html");
 		response.setCharacterEncoding("utf-8");
@@ -37,6 +29,14 @@ public class YoilTellerMVC {
 		out.println("</body>");
 		out.println("</html>");
 		
+	}
+
+	private char getYoil(int year, int month, int day) {
+		Calendar cal = Calendar.getInstance();
+		cal.set(year, month - 1, day);
+		
+		int dayOfweek = cal.get(Calendar.DAY_OF_WEEK);
+		return " 일월화수목금토".charAt(dayOfweek);
 	}
 
 }
