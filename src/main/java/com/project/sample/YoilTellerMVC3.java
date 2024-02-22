@@ -28,7 +28,7 @@ public class YoilTellerMVC3 {
 		mv.addObject("day", day);
 		mv.addObject("yoil", yoil);
 		
-		mv.setViewName("yoil");
+		mv.setViewName("yoil3");
 		
 		return mv;
 
