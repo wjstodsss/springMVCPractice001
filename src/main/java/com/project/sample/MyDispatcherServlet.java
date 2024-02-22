@@ -82,7 +82,8 @@ public class MyDispatcherServlet extends HttpServlet {
 			}
 			
 			// 3. Controller의 main()을 호출 - YoilTellerMVC.main(int year, int month, int day, Model model)
-			viewName = (String)main.invoke(obj, argArr); 	
+			viewName = (String)main.invoke(obj, argArr);
+
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
